@@ -32,6 +32,7 @@
     display: flex;
     justify-content: center;
     position: fixed;
+    z-index: 10;
     top: 0;
     left: -100%;
     transition: 850ms;
@@ -74,44 +75,19 @@
     height: 100%;
 }
 
-  .nav-menu-items {
+.nav-menu-items {
     width: 100%;
-  }
+}
   
-  .navbar-toggle {
+.navbar-toggle {
     background-color: #060b26;
     width: 100%;
     height: 80px;
     display: flex;
     justify-content: start;
     align-items: center;
-  }
+}
   
-  span {
+span {
     margin-left: 16px;
   }
-
-/*
-.sidebar-option{
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-
-.sidebar-option > .MuiSvgIcon-root {
-    padding: 20px;
-}
-
-.sidebar-option > h3 {
-    font-weight: 800;
-    font-size: 20px;
-    margin-right: 20px;
-}
-
-.sidebar-option:hover{
-    background-color: brown;
-    border-radius: 30px;
-    color: blue;
-    transition: 100ms ease-out;
-}
-*/

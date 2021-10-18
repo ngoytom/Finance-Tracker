@@ -1,10 +1,9 @@
-import React, {useState} from "react";
-import Sidebar from "./components/Sidebar";
-import Header from "./components/Header";
+import React from "react";
+import Header from "./components/Header/Header.js";
 import {BrowserRouter as Router, Switch, Route, NavLink} from "react-router-dom";
 import Home from "./pages/Home";
 import Budget from "./pages/Budget.js";
-import Stocks from "./pages/Stocks.js";
+import Transactions from "./pages/Transaction.js";
 //App JS is a wrapper so all components get rendered in here
 
 const App = () => {
@@ -14,8 +13,8 @@ const App = () => {
         <Header />
         <Switch>
           <Route path="/" activeStyle={{color:"blue"}} exact component={Home}/> 
-          <Route path="/budget"  activeStyle={{color:"blue"}} component={Budget}/> 
-          <Route path="/stocks"  activeStyle={{color:"blue"}} component={Stocks}/>
+          <Route path="/budget" activeStyle={{color:"blue"}} component={Budget}/> 
+          <Route path="/transactions" activeStyle={{color:"blue"}} component={Transactions}/>
         </Switch>
       </Router>
     </div>

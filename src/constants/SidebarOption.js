@@ -17,8 +17,8 @@ export const SidebarOption = [
         cName: "sidebar-option"
     },
     {
-        title: "Stocks",
-        path: "/stocks",
+        title: "Transactions",
+        path: "/transactions",
         icon: <TrendingUpIcon />,
         cName: "sidebar-option"
     },

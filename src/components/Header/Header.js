@@ -2,8 +2,8 @@ import React, {useState} from 'react'
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 import {Link, NavLink} from 'react-router-dom';
-import {SidebarOption} from "./SidebarOption";
-import "../styles/Sidebar.css"
+import {SidebarOption} from "../../constants/SidebarOption";
+import "../../styles/Sidebar.css"
 
 function Header() {
     const [sidebar, setSidebar] = useState(false);
