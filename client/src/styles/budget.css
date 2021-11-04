@@ -1,0 +1,48 @@
+
+.goals{
+    margin-top: 25px;
+    margin-left: 25px;
+    border-radius: 15px;
+    width: 40%;
+}
+
+.goals-items{
+    text-align: center;
+}
+
+.budget-item{
+    width: 40%;
+    margin: 0 auto;
+    align-items: center;
+    padding-bottom: 7px;
+    border-radius: 10px;
+}
+
+.budget-item:hover{
+    cursor: pointer;
+    background-color: aqua;
+    outline: 2px solid yellow;
+    transition: 350ms;
+}
+
+.budget-bar{
+    margin: 0 auto;
+}
+
+.budget-description{
+    float: right;
+}
+
+.lower-budget{
+    float: right;
+    display: flex;
+}
+.edit-budget-max{
+    float: right;
+    display: flex;
+    height: 20px;
+    width: 130px;
+    padding-bottom: 50px !important;
+
+}
+
