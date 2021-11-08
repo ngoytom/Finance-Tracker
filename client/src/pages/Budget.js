@@ -1,25 +1,47 @@
-import React, { useContext, useEffect } from 'react';
-import { Grid, Typography } from "@material-ui/core";
-import ProgressBar from "../components/ProgessBar/ProgressBar"
+import React, { useState, useEffect } from 'react';
+import { Grid, Card } from "@material-ui/core";
+import { expenseCategories } from '../constants/categories.js';
+import useTransactions from "../useTransactions.js";
+import ProgressBar from "../components/ProgressBar/ProgressBar"
 import BudgetTotal from "../components/BudgetCards/BudgetTotal/BudgetTotal"
 import BudgetCalc from "../components/BudgetCards/BudgetCalc/BudgetCalc"
-import { TransactionTrackerContext } from "../context/context.js"
 import "../styles/budget.css";
 
-function Budget({transaction}) {
-    const { getTransactions, transactions } = useContext(TransactionTrackerContext);
+const LOCAL_STORAGE_KEY = "budget-progress"
+
+function Budget() {
+    const { filteredCategories } = useTransactions("Expense");
+    const [budget, setBudget] = useState(expenseCategories);
+   
+    
+    useEffect(() => {
+        const storageBudget = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+        console.log(storageBudget)
+        if (storageBudget){
+            setBudget(storageBudget)
+        }
+    }, []);
+    console.log(budget);
+    useEffect(() => {
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(budget));
+    }, [budget]);
 
     return (
         <Grid container>
-            <Grid item xs={2}>
-                <BudgetTotal />
+            <Grid item xs={3}>
+                <BudgetTotal/>
             </Grid>
-            <Grid item xs={8}>
-                <div className="budget-item"> <ProgressBar title="Clothes" color="secondary" /></div>
-                <div className="budget-item"> <ProgressBar title="Food" color="secondary" /></div>
-                <div className="budget-item"> <ProgressBar title="Phone" color="secondary" /></div>
+            <Grid item xs={6}>
+                {expenseCategories.map(ex => <div className="budget-item"><ProgressBar 
+                                                                                key={ex.id} 
+                                                                                title={ex.type} 
+                                                                                color={ex.color} 
+                                                                                budget={budget} 
+                                                                                setBudget={setBudget} 
+                                                                                index={ex.id}/> 
+                                                                            </div>)}
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={3}>
                 <BudgetCalc />
             </Grid>
         </Grid>

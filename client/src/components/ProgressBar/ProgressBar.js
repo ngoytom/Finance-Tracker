@@ -7,19 +7,19 @@ import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import useTransactions from "../../useTransactions.js";
 import useStyles from "./styles.js"
 
-function ProgressBar({ title, color }) {
-    const [budgetAmount, setbudgetAmount] = useState(100);
+const LOCAL_STORAGE_KEY = "budget-progress"
+
+function ProgressBar({ title, color, index, budget, setBudget }) {
+    const [budgetAmount, setbudgetAmount] = useState(budget[index].budget);
     const [textMode, isTextMode] = useState(false);
     let category;
     const classes = useStyles();
     const { getTransactions, transactions } = useContext(TransactionTrackerContext);
 
     const { filteredCategories } = useTransactions("Expense");
-    console.log(filteredCategories)
     
     filteredCategories.forEach(() => {
         const filter = filteredCategories.find((c) => c.type === title);
-        console.log(filter)
         if (typeof filter !== "undefined"){
             category = filter;
         }
@@ -27,53 +27,42 @@ function ProgressBar({ title, color }) {
             category = {title: title, amount: 0};
         }
     });
-    console.log(category)
     function changeView(){
         isTextMode(!textMode);
     }
 
-    function addBudget(){
-        setbudgetAmount(prevBudget => prevBudget + 5)
-    }
-
-    function removeBudget(){
-        if (budgetAmount <= 0) {
-            return;
+    function updateBudget(e){
+        setbudgetAmount(e.target.value);
+        const data = localStorage.getItem(LOCAL_STORAGE_KEY);
+        console.log(data)
+        if (data != null){
+            let amount = JSON.parse(data);
+            amount[index].budget = Number(e.target.value);
+            let newArr = [...budget];
+            newArr[index].budget = e.target.value;
+            setBudget(newArr);
+            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(amount));
         }
-        setbudgetAmount(prevBudget => prevBudget - 5)
     }
 
     function renderEditView(){
-        return <span className="edit-budget-max">
-            <Button 
-                className={classes.adjustBudget} 
-                variant="contained"
-                onClick= {removeBudget} 
-                size="small" 
-                color="primary">
-                <KeyboardArrowLeftIcon />
-            </Button>
-            <TextField
-                className={classes.budgetText} 
-                variant="outlined"
-                size="small"
-                defaultValue={budgetAmount}
-                value={budgetAmount}
-            />
-            <Button c
-                className={classes.adjustBudget}
-                variant="contained" 
-                onClick= {addBudget}
-                size="small" 
-                color="primary">
-                <KeyboardArrowRightIcon />
-                </Button>
-        </span>
+        return <>
+             <TextField 
+                className={classes.editBudgetMax} 
+                type="number" 
+                label="Set Budget" 
+                placeholder={1} 
+                InputProps={{ inputProps: { min: 1 }}} 
+                fullWidth 
+                value={budget[index].budget} 
+                onChange={(e) => updateBudget(e)}
+            />   
+        </> 
     }
 
     const renderDefaultView = () =>{ 
         return<>
-        <span className="budget-description"><span className="budget-amount">${category.amount}</span> of<span className="budget-max">${budgetAmount}</span></span>
+        <span className="budget-description"><span className="budget-amount">${category.amount}</span> of<span className="budget-max">${budget[index].budget}</span></span>
         </>
     }
 
@@ -94,7 +83,7 @@ function ProgressBar({ title, color }) {
                 className = "budget-bar"  
                 variant = "determinate"
                 value = {total} 
-                color = {color}
+        
                 style = {{height: "15px", width: "100%"}}
             />
         </Container>

@@ -1,6 +1,5 @@
-import { useState, useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { TransactionTrackerContext } from './context/context';
-import axios from "axios";
 
 import { incomeCategories, expenseCategories, resetCategories } from './constants/categories';
 
@@ -9,9 +8,8 @@ import { incomeCategories, expenseCategories, resetCategories } from './constant
 const useTransactions = (title) => {
 
   resetCategories();
-  const { transactions, getTransactions } = useContext(TransactionTrackerContext);
+  const { transactions } = useContext(TransactionTrackerContext);
 
-  console.log(transactions)
   const rightTransactions = transactions.filter((t) => t.type === title);
   const total = rightTransactions.reduce((acc, currVal) => acc += currVal.amount, 0);
   const categories = title === 'Income' ? incomeCategories : expenseCategories;

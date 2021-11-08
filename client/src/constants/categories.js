@@ -13,18 +13,18 @@ export const incomeCategories = [
   { type: 'Rental income', amount: 0, color: incomeColors[8] },
 ];
 
-export const expenseCategories = [
-  { type: 'Bills', amount: 0, color: expenseColors[0] },
-  { type: 'Car', amount: 0, color: expenseColors[1] },
-  { type: 'Clothes', amount: 0, color: expenseColors[2] },
-  { type: 'Travel', amount: 0, color: expenseColors[3] },
-  { type: 'Food', amount: 0, color: expenseColors[4] },
-  { type: 'Shopping', amount: 0, color: expenseColors[5] },
-  { type: 'House', amount: 0, color: expenseColors[6] },
-  { type: 'Entertainment', amount: 0, color: expenseColors[7] },
-  { type: 'Phone', amount: 0, color: expenseColors[8] },
-  { type: 'Pets', amount: 0, color: expenseColors[9] },
-  { type: 'Other', amount: 0, color: expenseColors[10] },
+export let expenseCategories = [
+  { type: 'Bills', amount: 0, color: expenseColors[0], budget: 100, id: 0 },
+  { type: 'Car', amount: 0, color: expenseColors[1], budget: 100, id: 1 },
+  { type: 'Clothes', amount: 0, color: expenseColors[2], budget: 100, id: 2 },
+  { type: 'Travel', amount: 0, color: expenseColors[3], budget: 100, id: 3 },
+  { type: 'Food', amount: 0, color: expenseColors[4], budget: 100, id: 4 },
+  { type: 'Shopping', amount: 0, color: expenseColors[5], budget: 100, id: 5 },
+  { type: 'House', amount: 0, color: expenseColors[6], budget: 100, id: 6 },
+  { type: 'Entertainment', amount: 0, color: expenseColors[7], budget: 100, id: 7 },
+  { type: 'Phone', amount: 0, color: expenseColors[8], budget: 100, id: 8 },
+  { type: 'Pets', amount: 0, color: expenseColors[9], budget: 100, id: 9 },
+  { type: 'Other', amount: 0, color: expenseColors[10], budget: 100, id: 10 },
 ];
 
 export const resetCategories = () => {

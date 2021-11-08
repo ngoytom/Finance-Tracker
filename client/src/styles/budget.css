@@ -11,10 +11,12 @@
 }
 
 .budget-item{
-    width: 40%;
+    width: 70%;
     margin: 0 auto;
+    margin-top: 15px;
     align-items: center;
-    padding-bottom: 7px;
+    padding-top: 5px;
+    padding-bottom: 10px;
     border-radius: 10px;
 }
 
@@ -25,24 +27,9 @@
     transition: 350ms;
 }
 
-.budget-bar{
-    margin: 0 auto;
-}
-
-.budget-description{
-    float: right;
-}
-
 .lower-budget{
     float: right;
     display: flex;
 }
-.edit-budget-max{
-    float: right;
-    display: flex;
-    height: 20px;
-    width: 130px;
-    padding-bottom: 50px !important;
 
-}
 

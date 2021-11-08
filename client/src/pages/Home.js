@@ -3,6 +3,7 @@ import CardDetails from "../components/CardDetails.js";
 import { Card, CardHeader, CardContent, Grid, Container, Divider, List } from "@material-ui/core";
 import TodoForm from "../components/Todo/TodoForm.js";
 import TodoList from "../components/Todo/TodoList.js";
+import Stocks from "../components/Stocks/Stocks.js";
 import useStyles from "../styles/home.js";
 
 const LOCAL_STORAGE_KEY = "finance-todo-list"
@@ -58,7 +59,7 @@ function Home() {
                     <Grid item xs={12} sm={4} md={4}>
                         <CardDetails title="Monthly Saving"/>
                     </Grid>
-                    <Grid item xs={12} sm={5} md={5}>
+                    <Grid item xs={12} sm={6} md={6}>
                         <Card className={classes.goals}>
                             <CardHeader className={classes.goaltitle} titleTypographyProps={{variant:'h4'}} title="Goals"/>
                             <List>
@@ -67,13 +68,10 @@ function Home() {
                             </List>
                         </Card>
                     </Grid>
-                    <Grid item xs={12} sm={7} md={7}>
+                    <Grid item xs={12} sm={6} md={6}>
                         <Card className={classes.goals}>
-                            <CardHeader className={classes.goaltitle} title="Goals"/>
-                            <List>
-                                <TodoForm addTodo={addTodo} />
-                                <TodoList todos={todos} toggleComplete={toggleComplete} removeTodo={removeTodo}/>
-                            </List>
+                            <CardHeader className={classes.goaltitle} titleTypographyProps={{variant:'h4'}} title="Crypto"/>
+                            <Stocks />
                         </Card>
                     </Grid>
                 </Grid>

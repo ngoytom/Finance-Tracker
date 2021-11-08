@@ -12,7 +12,7 @@ export default makeStyles(() => ({
         background: '#f4f3f4',
         overflow: "auto",
         maxHeight: 550,
+        minHeight: 550,
         textAlign: 'center',
     },
-
 }));
