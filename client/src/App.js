@@ -8,11 +8,10 @@ import Transactions from "./pages/Transaction.js";
 //App JS is a wrapper so all components get rendered in here
 
 const App = () => {
-  const { getTransactions, transactions } = useContext(TransactionTrackerContext);
+  const { getTransactions } = useContext(TransactionTrackerContext);
   useEffect(() => {
     getTransactions()
  }, [])
-console.log(transactions)
   return (
     <div>
       <Router>

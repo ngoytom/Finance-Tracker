@@ -16,7 +16,7 @@ function Todo( {todo, toggleComplete, removeTodo} ) {
     return ( 
         <ListItem className={classes.listItem}>
             <Checkbox className={classes.check} checked={todo.completed} type="checkbox" onClick={handleCheckboxClick}/>
-            <Typography variant="subtitle1" style={{
+            <Typography variant="h6" style={{
                 color: "black",
                 textDecoration: todo.completed ? "line-through" : null,
             }}>{todo.task}</Typography>

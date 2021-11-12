@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import CardDetails from "../components/CardDetails.js";
-import { Card, CardHeader, CardContent, Grid, Container, Divider, List } from "@material-ui/core";
+import { Card, CardHeader, Typography, Grid, Container, List } from "@material-ui/core";
 import TodoForm from "../components/Todo/TodoForm.js";
 import TodoList from "../components/Todo/TodoList.js";
 import Stocks from "../components/Stocks/Stocks.js";
@@ -48,16 +48,16 @@ function Home() {
     return (
         <div className={classes.body}>
             <Container maxWidth={false}>
-                <h2>Your Financial Dashboard</h2>
+                <Typography variant="h4" className={classes.heading}>Your Financial Dashboard</Typography>
                 <Grid container spacing={8} alignItems="center" justifyContent="space-evenly">
                     <Grid item xs={12} sm={4} md={4}>
-                        <CardDetails title="Monthly Income"/>
+                        <CardDetails title="Monthly Income" color="#81ff4f"/>
                     </Grid>
                     <Grid item xs={12} sm={4} md={4}>
-                        <CardDetails title="Monthly Expense"/>
+                        <CardDetails title="Monthly Expense" color="#FF5C58"/>
                     </Grid>
                     <Grid item xs={12} sm={4} md={4}>
-                        <CardDetails title="Monthly Saving"/>
+                        <CardDetails title="Monthly Saving" color="#798cc9"/>
                     </Grid>
                     <Grid item xs={12} sm={6} md={6}>
                         <Card className={classes.goals}>

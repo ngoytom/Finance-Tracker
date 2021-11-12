@@ -8,8 +8,13 @@ export default makeStyles(() => ({
         background: '#e5e4e5',
         fontWeight: 'bolder',
     },
+    heading: {
+        marginTop: '15px',
+        marginBottom: '10px',
+        color: 'white'
+    },
     goals: {
-        background: '#f4f3f4',
+        background: '#black',
         overflow: "auto",
         maxHeight: 550,
         minHeight: 550,

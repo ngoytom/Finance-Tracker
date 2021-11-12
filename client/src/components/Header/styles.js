@@ -10,12 +10,14 @@ export default makeStyles(() => ({
         fontSize: '30px !important',
         marginTop: '10px',
         marginLeft: '-5px',
+        color: 'black'
     },
     menuBars: {
         marginLeft: '50px',
         marginTop: '-50px',
         fontSize: '2rem',
         background: 'none',
+        color: 'black'
     },
     overlay: {
         position: 'absolute',   

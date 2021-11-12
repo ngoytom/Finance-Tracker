@@ -19,4 +19,7 @@ export default makeStyles(() => ({
         paddingRight: '20px',
         width: '20px',
     },
+    input: {
+        marginLeft: '60px'
+    }
 }));
