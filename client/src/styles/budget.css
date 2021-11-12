@@ -1,3 +1,8 @@
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../assets/transaction.png);
+    background-size: cover;
+}
+
 
 .goals{
     margin-top: 25px;
@@ -22,7 +27,7 @@
 
 .budget-item:hover{
     cursor: pointer;
-    background-color: aqua;
+    background-color: crimson;
     outline: 2px solid yellow;
     transition: 350ms;
 }

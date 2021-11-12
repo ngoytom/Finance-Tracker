@@ -16,7 +16,7 @@ const TransactionSchema = new mongoose.Schema({
         required: [true, "Please add a number"]
     },
     date: {
-        type: Date,
+        type: String,
         default: Date.now
     }
 });

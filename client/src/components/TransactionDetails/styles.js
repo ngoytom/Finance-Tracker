@@ -7,6 +7,7 @@ export default makeStyles(() => ({
     },
     balanceDivider: {
         marginTop: '15px',
-        marginBottom: '15px'
+        marginBottom: '15px',
+        paddingTop: '3px'
     }
 }));

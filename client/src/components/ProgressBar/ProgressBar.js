@@ -1,21 +1,25 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { TransactionTrackerContext } from "../../context/context.js"
-import { Container, LinearProgress, TextField, Button, Typography } from "@material-ui/core";
-import { expenseCategories } from '../../constants/categories.js';
-import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
-import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
+import React, { useState } from 'react';
+import { Container, LinearProgress, TextField, Typography } from "@material-ui/core";
 import useTransactions from "../../useTransactions.js";
+import { withStyles } from "@material-ui/core/styles";
 import useStyles from "./styles.js"
 
 const LOCAL_STORAGE_KEY = "budget-progress"
 
 function ProgressBar({ title, color, index, budget, setBudget }) {
+    const StyledLinearProgress = withStyles({
+        colorPrimary: {
+          backgroundColor: "#00695C"
+        },
+        barColorPrimary: {
+          backgroundColor: color
+        }
+      })(LinearProgress);
+
     const [budgetAmount, setbudgetAmount] = useState(budget[index].budget);
     const [textMode, isTextMode] = useState(false);
     let category;
-    const classes = useStyles();
-    const { getTransactions, transactions } = useContext(TransactionTrackerContext);
-
+    const classes = useStyles(color);
     const { filteredCategories } = useTransactions("Expense");
     
     filteredCategories.forEach(() => {
@@ -27,6 +31,7 @@ function ProgressBar({ title, color, index, budget, setBudget }) {
             category = {title: title, amount: 0};
         }
     });
+
     function changeView(){
         isTextMode(!textMode);
     }
@@ -34,7 +39,6 @@ function ProgressBar({ title, color, index, budget, setBudget }) {
     function updateBudget(e){
         setbudgetAmount(e.target.value);
         const data = localStorage.getItem(LOCAL_STORAGE_KEY);
-        console.log(data)
         if (data != null){
             let amount = JSON.parse(data);
             amount[index].budget = Number(e.target.value);
@@ -48,6 +52,12 @@ function ProgressBar({ title, color, index, budget, setBudget }) {
     function renderEditView(){
         return <>
              <TextField 
+                InputProps={{
+                    className: classes.input
+                }}
+                InputLabelProps={{
+                    className: classes.input
+                }}
                 className={classes.editBudgetMax} 
                 type="number" 
                 label="Set Budget" 
@@ -62,7 +72,7 @@ function ProgressBar({ title, color, index, budget, setBudget }) {
 
     const renderDefaultView = () =>{ 
         return<>
-        <span className="budget-description"><span className="budget-amount">${category.amount}</span> of<span className="budget-max">${budget[index].budget}</span></span>
+        <span className={classes.budgetDescription}><span className="budget-amount">${category.amount}</span> of<span className="budget-max">${budget[index].budget}</span></span>
         </>
     }
 
@@ -77,13 +87,12 @@ function ProgressBar({ title, color, index, budget, setBudget }) {
 
     return (
         <Container onMouseEnter={changeView} onMouseLeave={changeView}>
-            <Typography variant="h5" className="budget-title">{title} 
+            <Typography variant="h5" style={{ color: color }}className="budget-title">{title} 
             <span>{!textMode ? renderDefaultView() : renderEditView()}</span></Typography>
-            <LinearProgress 
-                className = "budget-bar"  
+            <StyledLinearProgress 
                 variant = "determinate"
+                valueBuffer="100" 
                 value = {total} 
-        
                 style = {{height: "15px", width: "100%"}}
             />
         </Container>

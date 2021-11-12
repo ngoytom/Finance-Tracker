@@ -1,8 +1,9 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export default makeStyles((theme) => ({
+export default makeStyles(() => ({
   budgetDescription: {
-    float: 'right'
+    float: 'right',
+    color: 'white'
   },
   editBudgetMax: {
     float: 'right',
@@ -11,7 +12,7 @@ export default makeStyles((theme) => ({
     width: '130px',
     paddingBottom: '50px !important'
   },
-
-
-
+  input: {
+    color: "white"
+  }
 }));

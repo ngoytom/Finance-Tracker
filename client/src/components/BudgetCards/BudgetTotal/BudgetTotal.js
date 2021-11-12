@@ -1,30 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Card, CardHeader, CardContent, Typography } from "@material-ui/core";
 import useTransactions from "../../../useTransactions.js";
-import { expenseCategories } from '../../../constants/categories.js';
 import useStyles from "./styles.js";
 
-function BudgetTotal() {
+function BudgetTotal({ sum }) {
     const classes = useStyles();
-    const [sum, setSum] = useState(1100);
     const { total } = useTransactions("Expense");
-    console.log(expenseCategories)
-
-    useEffect(() => {
-        updateSum()
-     }, [sum])
-    
-    function updateSum(){
-        setSum(expenseCategories.reduce((a, { budget }) => a + budget, 0))
-    }
-
-    console.log(sum)
+   
     return (
-        <Card className={classes.budgetTotal} style={{backgroundColor: "red"}}>
+        <Card className={classes.budgetTotal} style={{backgroundColor: "#d1dc6d", color: "#763000"}}>
             <CardHeader titleTypographyProps={{variant:'h4'}} title="Spending"/>
             <CardContent>
-                <Typography variant="h5">${total} spent</Typography>
-                <Typography variant="h6">of ${sum}</Typography>
+                <Typography variant="h5"><span className={classes.totalLabel}>${total}</span> <span className={classes.totalWord}> spent </span></Typography>
+                <Typography variant="body1"> of <span className={classes.spentLabel}>${sum}</span></Typography>
             </CardContent>
             
         </Card>
