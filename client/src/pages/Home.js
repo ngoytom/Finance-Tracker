@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import CardDetails from "../components/CardDetails.js";
 import { Card, CardHeader, Typography, Grid, Container, List } from "@material-ui/core";
 import TodoForm from "../components/Todo/TodoForm.js";
+import useTransactions from "../useTransactions.js";
 import TodoList from "../components/Todo/TodoList.js";
 import Stocks from "../components/Stocks/Stocks.js";
 import useStyles from "../styles/home.js";
@@ -11,6 +12,7 @@ const LOCAL_STORAGE_KEY = "finance-todo-list"
 function Home() {
     const classes = useStyles();
     const [todos, setTodos] = useState([]);
+    const { total } = useTransactions("Expense");
 
     function addTodo(todo) {
         setTodos([todo, ...todos]);
@@ -51,13 +53,13 @@ function Home() {
                 <Typography variant="h4" className={classes.heading}>Your Financial Dashboard</Typography>
                 <Grid container spacing={8} alignItems="center" justifyContent="space-evenly">
                     <Grid item xs={12} sm={4} md={4}>
-                        <CardDetails title="Monthly Income" color="#81ff4f"/>
+                        <CardDetails title="Income" color="#81ff4f"/>
                     </Grid>
                     <Grid item xs={12} sm={4} md={4}>
-                        <CardDetails title="Monthly Expense" color="#FF5C58"/>
+                        <CardDetails title="Expense" amount={total} color="#FF5C58"/>
                     </Grid>
                     <Grid item xs={12} sm={4} md={4}>
-                        <CardDetails title="Monthly Saving" color="#798cc9"/>
+                        <CardDetails title="Savings" amount={total} color="#798cc9"/>
                     </Grid>
                     <Grid item xs={12} sm={6} md={6}>
                         <Card className={classes.goals}>

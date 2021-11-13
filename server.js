@@ -9,7 +9,6 @@ dotenv.config({ path: "./config/config.env" });
 connectDB();
 
 const transactions = require("./routes/transactions");
-const budget = require("./routes/budget")
   
 const app = express();
 
@@ -20,9 +19,7 @@ if(process.env.NODE_ENV === "development"){
 }
 
 app.use("/api/v1/transactions", transactions);
-app.use("/api/v1/budget", budget)
 
- 
 const PORT = process.env.PORT || 5000;
  
 

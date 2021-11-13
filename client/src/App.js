@@ -12,6 +12,7 @@ const App = () => {
   useEffect(() => {
     getTransactions()
  }, [])
+
   return (
     <div>
       <Router>

@@ -4,6 +4,7 @@ import useStyles from "./styles.js"
 
 function StockRow({ ticker, image, symbol, price, marketCap, priceChange }) {
     const classes = useStyles();
+    
     return (
         <>  
             <TableCell component="th" scope="row">{ticker} <img className={classes.cryptoImage} src={image} alt="crypto"/></TableCell>

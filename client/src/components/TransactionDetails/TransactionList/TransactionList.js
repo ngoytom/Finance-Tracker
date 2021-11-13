@@ -7,7 +7,7 @@ import useStyles from "./styles.js"
 function TransactionList() {
     const classes = useStyles();
     const { deleteTransaction, transactions } = useContext(TransactionTrackerContext);
-    console.log(transactions)
+    
     return (
         <List dense={false} className={classes.list}> 
             {transactions.map((transaction) => (

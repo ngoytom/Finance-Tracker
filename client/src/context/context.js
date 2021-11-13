@@ -15,7 +15,6 @@ export const Provider = ({ children }) => {
     async function getTransactions(){
         try{
             const res = await axios.get("/api/v1/transactions");
-            console.log(res.data.data)
             dispatch({
                 type: ACTIONS.GET_TRANSACTION,
                 payload: res.data.data 
@@ -62,8 +61,7 @@ export const Provider = ({ children }) => {
           });
         }
       }
-    
-    console.log(state)
+  
     return (
         <TransactionTrackerContext.Provider value={{ 
             deleteTransaction,

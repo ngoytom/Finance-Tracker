@@ -15,7 +15,7 @@ const initialState = {
 function TransactionForm() {
     const [formData, setFormData] = useState(initialState);
     const { addTransaction, getTransactions } = useContext(TransactionTrackerContext);
-    let current = formData.type == "Income" ? "Food" : "Salary";
+    let current = formData.type === "Income" ? "Food" : "Salary";
 
     const createTransaction = () => {
         const transaction = { ...formData, amount: Number(formData.amount), id: uuidv4() }
@@ -27,7 +27,7 @@ function TransactionForm() {
         getTransactions()
      }, [])
 
-    const selectedCategories = formData.type == "Income" ? incomeCategories : expenseCategories;
+    const selectedCategories = formData.type === "Income" ? incomeCategories : expenseCategories;
 
     return (
         <Grid container spacing={2}>
