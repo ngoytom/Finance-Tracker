@@ -1,5 +1,6 @@
 # Finance Tracker App
 
+*No longer live due to Heroku Dynos changes*
 ## [Live Demonstration](https://ngoytom-finance-tracker.herokuapp.com/)
 <img src="https://github.com/ngoytom/Finance-Tracker/blob/main/demo.gif" width="900" height="500">
 
